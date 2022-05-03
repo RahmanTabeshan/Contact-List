@@ -1,0 +1,38 @@
+form {
+    width: 50% ;
+    display: flex ;
+    flex-direction: column ;
+    align-items: center ;
+}
+.form-control {
+    width: 100% ;
+    display: flex ;
+    flex-direction: column ;
+    align-items: flex-start ;
+    margin-top: 20px;
+}
+.form-control input {
+    width: 100% ;
+    outline: none ;
+    border-radius: 5px ;
+    border : 1px solid #ccc ;
+    padding: 10px 15px ;
+    margin-top: 10px;
+}
+.form-control input:focus {
+    outline : 1px solid #ccc ;
+}
+.btn {
+    font-weight: bold ;
+    cursor: pointer;
+    border: none ;
+    border-radius: 5px ;
+    outline: none ;
+    margin-top: 20px;
+    padding: 10px 15px ;
+    color: #fff ;
+    background: #7c3aed;
+}
+.list {
+    padding: 10px 15px ;
+}

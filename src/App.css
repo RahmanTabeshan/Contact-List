@@ -25,11 +25,3 @@ a.add , a.list {
     display: block ;
     color : #fff ;
 }
-.btn-link {
-    all : unset ;
-    font-weight: bold ;
-    border-radius: 5px ;
-    margin-top: 20px;
-    color: #fff ;
-    background: #7c3aed;
-}

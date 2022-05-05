@@ -1,9 +1,9 @@
-import "./AddContact.css" ;
-import { useState } from "react";
+import "../AddContact/AddContact.css" ;
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { addUser } from "../../Services/actionData";
+import { editUser, getOneUser } from "../../Services/actionData";
 
-const AddContact = ({history}) => {
+const EditContact = ({ match , history}) => {
 
     const [form,setForm] = useState({
         Name : '' ,
@@ -14,35 +14,48 @@ const AddContact = ({history}) => {
         setForm({...form , [e.target.name]:e.target.value}) ;
     }
 
-    const AddContactHandler = async (e) =>{
+    const id = match.params.id ;
+    useEffect(()=>{
+        const User = async (id) => { 
+            try {
+                const {data} = await getOneUser(id) ;
+                setForm(data) ;
+            } catch (error) {
+                console.log(error) ;
+            }
+        }
+        User(id) ;
+    },[])
+
+    const EditContactHandler = async (e)=>{
         e.preventDefault() ;
         if(!form.Name || !form.Email ){
             alert("مقادیر را وارد کنید") ;
             return ;
         }
-        const added = {id:Math.floor(Math.random()*1000000000) , ...form} ;
         try {
-            await addUser(added) ;
+            await editUser(form) ; 
             setForm({
                 Name : '' ,
-                Email : '' 
+                Email : '' ,
+                id : null 
             })
             history.push("/") ;
         } catch (error) {
-            console.log(error) ;
+            console.log(error)
         }
     }
 
     return (
         <section className="add-contact">
             <div className="add-header">
-                <h2>Add Contact</h2>
+                <h2>Edit Contact</h2>
                 <Link to="/" className="list">
                     Contact List
                 </Link>
             </div>
             
-            <form onSubmit={AddContactHandler}>
+            <form onSubmit={EditContactHandler}>
                 <div className="form-control">
                     <label htmlFor="name">Name : </label>
                     <input type="text" id="name" name="Name" value={form.Name} onChange={changeHandler} />
@@ -51,10 +64,10 @@ const AddContact = ({history}) => {
                     <label htmlFor="email">Email : </label>
                     <input type="text" id="email" name="Email" value={form.Email} onChange={changeHandler} />
                 </div>
-                <button className="btn btn-add" type="submit">Add Contact</button>
+                <button className="btn btn-add" type="submit">Edit Contact</button>
             </form>
         </section>
     );
 }
  
-export default AddContact;
+export default EditContact;

@@ -1,3 +1,4 @@
+import "./Contact.css" ;
 import { Link } from "react-router-dom";
 import User from "../../../assets/image/User.png" ;
 
@@ -16,7 +17,12 @@ const Contact = ({contact , onDelete}) => {
                     <p>{Email}</p>
                 </div>
             </div>
-            <button onClick={onDelete} >Delete</button>
+            <div className="btns">
+                <Link to={`/Edit/${id}`} className="btn-edit" >
+                    Edit 
+                </Link>
+                <button className="btn btn-delete" onClick={onDelete} >Delete</button>
+            </div>
         </div>
     );
 }

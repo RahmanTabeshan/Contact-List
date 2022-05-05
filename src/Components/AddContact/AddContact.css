@@ -22,17 +22,34 @@ form {
 .form-control input:focus {
     outline : 1px solid #ccc ;
 }
-.btn {
+.list {
+    padding: 10px 15px ;
     font-weight: bold ;
     cursor: pointer;
     border: none ;
     border-radius: 5px ;
     outline: none ;
-    margin-top: 20px;
     padding: 10px 15px ;
     color: #fff ;
     background: #7c3aed;
 }
-.list {
-    padding: 10px 15px ;
+.add-header {
+    display: flex ;
+    justify-content: space-between ;
+    align-items: center ;
+    width: 50% ;
+    margin-top: 20px;
+}
+.btn {
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+.btn-add {
+    color: #fff;
+    margin-top: 20px;
+    background: #7c3aed;
+    padding: 10px 15px;
 }
